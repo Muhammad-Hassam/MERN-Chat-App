@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Navbar } from "./components";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuthStore } from "./store/useAuthStore";
+import { useThemeStore } from "./store/useThemeStore";
 import { Loader } from "lucide-react";
 import {
   HomePage,
@@ -14,7 +15,7 @@ import { Toaster } from "react-hot-toast";
 
 function App() {
   const { authUser, checkAuth, isCheckinAuth } = useAuthStore();
-
+  const { theme } = useThemeStore();
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
@@ -25,8 +26,9 @@ function App() {
         <Loader className="size-10 animate-spin" />
       </div>
     );
+  console.log(theme, "theme");
   return (
-    <div>
+    <div data-theme={theme}>
       <Navbar />
       <Routes>
         <Route
