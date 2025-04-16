@@ -27,8 +27,8 @@ const SignUpPage = () => {
     if (!/\S+@\S+/.test(formData.email))
       return toast.error("Invalid email format");
     if (!formData.password) return toast.error("Password is required");
-    // if (!formData.password.length < 6)
-    //   return toast.error("Password must be at least 6 characters");
+    if (formData.password.length < 6)
+      return toast.error("Password must be at least 6 characters");
     return true;
   };
 
@@ -40,6 +40,10 @@ const SignUpPage = () => {
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
+      <AuthImagePattern
+        title="Join our community"
+        subtitle="Connect with friends, share moments, and stay in touch with you"
+      />
       <div className="flex flex-col justify-center items-center p-6 sm:12">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center mb-8">
@@ -150,11 +154,6 @@ const SignUpPage = () => {
           </div>
         </div>
       </div>
-
-      <AuthImagePattern
-        title="Join our community"
-        subtitle="Connect with friends, share moments, and stay in touch with you"
-      />
     </div>
   );
 };

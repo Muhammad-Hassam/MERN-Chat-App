@@ -14,8 +14,9 @@ import {
 import { Toaster } from "react-hot-toast";
 
 function App() {
-  const { authUser, checkAuth, isCheckinAuth } = useAuthStore();
+  const { authUser, checkAuth, isCheckinAuth, onlineUser } = useAuthStore();
   const { theme } = useThemeStore();
+
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
@@ -26,7 +27,6 @@ function App() {
         <Loader className="size-10 animate-spin" />
       </div>
     );
-  console.log(theme, "theme");
   return (
     <div data-theme={theme}>
       <Navbar />
